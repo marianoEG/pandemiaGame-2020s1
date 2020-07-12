@@ -6,11 +6,16 @@ class Persona {
 	var property diaQueSeInfecto = 0
 	var property estaInfectada = false
 	var property respetaCuarentena = false
+	var property estuvoInfectada = false
 	
 	method infectarse() { 
+		if (not estuvoInfectada){
+			
 		estaInfectada = true 
 		diaQueSeInfecto = simulacion.diaActual()
+		estuvoInfectada = true
 		tieneSintomas = 0.randomUpTo(100) < simulacion.chanceDePresentarSintomas()
+		}
 	}
 	method respetarCuarentena() { respetaCuarentena = true}
 	method aislar(){ estaAislada = true }

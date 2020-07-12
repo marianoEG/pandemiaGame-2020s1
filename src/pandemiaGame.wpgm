@@ -20,12 +20,14 @@ object pandemiaGameConfig {
 		
 		//INFORME EN CONSOLA
 		keyboard.c().onPressDo({ 
+			console.println("++++++++++++++++++INFORME++++++++++++++++++")
 			console.println("dia:") console.println(simulacion.diaActual())
 			console.println("total de personas:") console.println(simulacion.cantidadDePersonasEnBarrio())
 			console.println("total de infectados:") console.println(simulacion.infectadosEnBarrio())
 			console.println("total de sintomaticos:") console.println(simulacion.cantidadSintomaticos())
 			console.println("total de aislados:") console.println(simulacion.cantidadAislados())
 			console.println("total de personas que respetan cuarentena:") console.println(simulacion.respetanLaCuarentena())
+			console.println("*******************************************")
 		})
 		//MOVIMIENTO AGENTE DE SALUD
 		keyboard.right().onPressDo({ if (agenteSalud.position().x() + 1 < self.width()){agenteSalud.moverDerecha()}})
