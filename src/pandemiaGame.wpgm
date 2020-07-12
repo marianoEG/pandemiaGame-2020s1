@@ -1,5 +1,6 @@
 import wollok.game.*
 import simulacion.*
+import agenteSalud.*
 
 object pandemiaGameConfig {
 	method height() = 4
@@ -9,9 +10,34 @@ object pandemiaGameConfig {
 	method configureGame() {
 		self.configureGameParameters()
 		self.agregarManzanas()
+		game.addVisual(agenteSalud)
 		
-		// agregar las teclas de acciones
-		// después, al agente de salud y sus teclas de acciones y movimiento
+		//PASAR DIA
+		keyboard.p().onPressDo({ simulacion.pasarDiaBarrio() console.println("termino dia:") console.println( simulacion.diaActual()) })
+		
+		//IMPORTAR CASO
+		keyboard.i().onPressDo({ simulacion.importarCaso() })
+		
+		//INFORME EN CONSOLA
+		keyboard.c().onPressDo({ 
+			console.println("dia:") console.println(simulacion.diaActual())
+			console.println("total de personas:") console.println(simulacion.cantidadDePersonasEnBarrio())
+			console.println("total de infectados:") console.println(simulacion.infectadosEnBarrio())
+			console.println("total de sintomaticos:") console.println(simulacion.cantidadSintomaticos())
+			console.println("total de aislados:") console.println(simulacion.cantidadAislados())
+			console.println("total de personas que respetan cuarentena:") console.println(simulacion.respetanLaCuarentena())
+		})
+		//MOVIMIENTO AGENTE DE SALUD
+		keyboard.right().onPressDo({ if (agenteSalud.position().x() + 1 < self.width()){agenteSalud.moverDerecha()}})
+		keyboard.left().onPressDo({ if (agenteSalud.position().x() > 0) {agenteSalud.moverIzquierda()}})
+		keyboard.up().onPressDo({ if (agenteSalud.position().y() +1 < self.height()) {agenteSalud.moverArriba()}})
+		keyboard.down().onPressDo({ if (agenteSalud.position().y() > 0) {agenteSalud.moverAbajo()}})
+		
+		//ACCIONES AGENTE DE SALUD
+		keyboard.a().onPressDo({agenteSalud.aislarInfectadosConSintomas()})
+		keyboard.f().onPressDo({agenteSalud.convencerQueRespetenCuarentena(game.uniqueCollider(agenteSalud))})
+		
+		
 	}
 		
 	method configureGameParameters() {

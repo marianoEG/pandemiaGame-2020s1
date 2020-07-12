@@ -16,11 +16,7 @@ object simulacion {
 		manzanas.forEach({m=>m.pasarUnDia()})
 		diaActual += 1
 	}
-	/*
-	 * este sirve para generar un azar
-	 * p.ej. si quiero que algo pase con 30% de probabilidad pongo
-	 * if (simulacion.tomarChance(30)) { ... } 
-	 */ 	
+		
 	method tomarChance(porcentaje) = 0.randomUpTo(100) < porcentaje
 
 	method agregarManzana(manzana) { manzanas.add(manzana) }
@@ -49,6 +45,7 @@ object simulacion {
 	method cantidadSintomaticos(){return manzanas.sum({m=>m.numeroinfectadosConSintomas()})}
 	method cantidadAislados(){return manzanas.sum({m=>m.numeroDeAislados()})}
 	method cantidadContagiadores(){return manzanas.sum({m=>m.numeroDeContagiadores()})}
+	method respetanLaCuarentena(){return manzanas.sum({m=>m.cantidadCuarentena()})}
 	
 	
 	

@@ -69,6 +69,7 @@ class Manzana {
 	method numeroinfectadosConSintomas(){ return personas.count({p=>p.tieneSintomas()})}
 	method numeroDeAislados(){ return personas.count({p=>p.estaAislada()})}
 	method numeroDeContagiadores(){ return self.infectadosNoAislados().size()}
+	method cantidadCuarentena(){return personas.count({p=>p.respetaCuarentena()})}
 	
 	
 	method infectadosConSintomas(){ return personas.filter({p=>p.tieneSintomas()})}
