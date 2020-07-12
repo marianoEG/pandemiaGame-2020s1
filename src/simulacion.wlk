@@ -11,7 +11,11 @@ object simulacion {
 	const property chanceDeContagioConCuarentena = 2
 	const property personasPorManzana = 10
 	const property duracionInfeccion = 20
-
+	
+	method pasarDiaBarrio(){ 
+		manzanas.forEach({m=>m.pasarUnDia()})
+		diaActual += 1
+	}
 	/*
 	 * este sirve para generar un azar
 	 * p.ej. si quiero que algo pase con 30% de probabilidad pongo
@@ -31,7 +35,27 @@ object simulacion {
 
 	method crearManzana() {
 		const nuevaManzana = new Manzana()
-		// agregar la cantidad de personas segun self.personasPorManzana()
+		const persona = new Persona()
+		self.personasPorManzana().times({n => nuevaManzana.agregarHabitante(persona)})
 		return nuevaManzana
 	}
+	
+	method aislarInfectadosConSintomas(){ 
+		manzanas.forEach({m=>m.aislarInfectadosSintomaticos()})
+	}
+	
+	method cantidadDePersonasEnBarrio(){return manzanas.sum({m=>m.totalHabitantes()})}
+	method infectadosEnBarrio(){return manzanas.sum({m=>m.numeroDeInfectados()})}
+	method cantidadSintomaticos(){return manzanas.sum({m=>m.numeroinfectadosConSintomas()})}
+	method cantidadAislados(){return manzanas.sum({m=>m.numeroDeAislados()})}
+	method cantidadContagiadores(){return manzanas.sum({m=>m.numeroDeContagiadores()})}
+	
+	
+	
+	method elegirManzanaAlAzar(){ return manzanas.get(0.randomUpTo( manzanas.size() -1 ))}
+	method importarCaso(){self.elegirManzanaAlAzar().agregarInfectado()}
+	
+	
+	
+	
 }
