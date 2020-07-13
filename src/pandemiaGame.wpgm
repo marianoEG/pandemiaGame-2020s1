@@ -36,8 +36,8 @@ object pandemiaGameConfig {
 		keyboard.down().onPressDo({ if (agenteSalud.position().y() > 0) {agenteSalud.moverAbajo()}})
 		
 		//ACCIONES AGENTE DE SALUD
-		keyboard.a().onPressDo({agenteSalud.aislarInfectadosConSintomas()})
-		keyboard.f().onPressDo({agenteSalud.convencerQueRespetenCuarentena(game.uniqueCollider(agenteSalud))})
+		keyboard.a().onPressDo({agenteSalud.aislarInfectadosConSintomas() game.say(agenteSalud, "Aislar infectados")})
+		keyboard.f().onPressDo({agenteSalud.convencerQueRespetenCuarentena(game.uniqueCollider(agenteSalud)) game.say(agenteSalud, "Respeten la cuarentena por favor")})
 		
 		
 	}
