@@ -36,9 +36,7 @@ object simulacion {
 		return nuevaManzana
 	}
 	
-	method aislarInfectadosConSintomas(){ 
-		manzanas.forEach({m=>m.aislarInfectadosSintomaticos()})
-	}
+	method aislarInfectadosConSintomas(){manzanas.forEach({m=>m.aislarInfectadosSintomaticos()})}
 	
 	method cantidadDePersonasEnBarrio(){return manzanas.sum({m=>m.totalHabitantes()})}
 	method infectadosEnBarrio(){return manzanas.sum({m=>m.numeroDeInfectados()})}

@@ -10,7 +10,6 @@ class Persona {
 	
 	method infectarse() { 
 		if (not estuvoInfectada){
-			
 		estaInfectada = true 
 		diaQueSeInfecto = simulacion.diaActual()
 		estuvoInfectada = true

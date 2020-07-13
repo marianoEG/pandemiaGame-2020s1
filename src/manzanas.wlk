@@ -14,10 +14,8 @@ class Manzana {
 		else { "blanco.png"}
 	}
 	
-	// este les va a servir para el movimiento
-	method esManzanaVecina(manzana) {
-		return manzana.position().distance(position) == 1
-	}
+	
+	method esManzanaVecina(manzana) {return manzana.position().distance(position) == 1}
 
 	method pasarUnDia() {
 		self.transladoDeUnHabitante()
@@ -31,13 +29,9 @@ class Manzana {
 		manzanaDestino.agregarHabitante(persona)
 	}
 	
-	method cantidadContagiadores() {
-		return self.infectadosNoAislados().size()
-	}
+	method cantidadContagiadores() {return self.infectadosNoAislados().size()}
 	
-	method noInfectades() {
-		return personas.filter({ pers => not pers.estaInfectada() })
-	} 	
+	method noInfectades() {return personas.filter({ pers => not pers.estaInfectada() })} 	
 	
 	method simulacionContagiosDiarios() { 
 		const cantidadContagiadores = self.cantidadContagiadores()

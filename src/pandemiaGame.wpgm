@@ -27,7 +27,7 @@ object pandemiaGameConfig {
 			console.println("total de sintomaticos:") console.println(simulacion.cantidadSintomaticos())
 			console.println("total de aislados:") console.println(simulacion.cantidadAislados())
 			console.println("total de personas que respetan cuarentena:") console.println(simulacion.respetanLaCuarentena())
-			console.println("*******************************************")
+			console.println("+++++++++++++++++++++++++++++++++++++++++++")
 		})
 		//MOVIMIENTO AGENTE DE SALUD
 		keyboard.right().onPressDo({ if (agenteSalud.position().x() + 1 < self.width()){agenteSalud.moverDerecha()}})
